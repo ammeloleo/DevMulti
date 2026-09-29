@@ -1,27 +1,24 @@
-
-
-#🎓 BLOG ACADÊMICO
+# 🎓 BLOG ACADÊMICO
 
 **Uma plataforma intuitiva para organização de estudos, colaboração e gestão da vida universitária.**
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
-
-</div>
-
->[!NOTE]
->Este projeto é um protótipo funcional de front-end desenvolvido com foco em Experiência do Usuário (UX) e Design Responsivo.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ---
 
-##📌 Sobre o Projeto
-
-O**Blog Acadêmico** surge para resolver a fragmentação das rotinas universitárias. Em vez de utilizar múltiplos aplicativos para acompanhar entregas, encontrar colegas de grupo e ver avisos, a plataforma centraliza todas as ferramentas essenciais do estudante em um só ambiente.
+> **Nota:** Este projeto é um protótipo funcional de front-end desenvolvido com foco em Experiência do Usuário (UX) e Design Responsivo.
 
 ---
 
-##🎯 Objetivos
+## 📌 Sobre o Projeto
+
+O **Blog Acadêmico** surge para resolver a fragmentação das rotinas universitárias[cite: 1]. Em vez de utilizar múltiplos aplicativos para acompanhar entregas, encontrar colegas de grupo e ver avisos, a plataforma centraliza todas as ferramentas essenciais do estudante em um só ambiente[cite: 1].
+
+---
+
+## 🎯 Objetivos
 
 - 🚀 **Centralização:** Reunir trabalhos, prazos e notificações em uma única interface.
 - 🤝 **Conectividade:** Facilitar o networking e o trabalho em equipe através do recurso *Buddies* e *Chat*.
@@ -29,7 +26,7 @@ O**Blog Acadêmico** surge para resolver a fragmentação das rotinas universit�
 
 ---
 
-##✨ Funcionalidades Principais
+## ✨ Funcionalidades Principais
 
 | Recurso | Descrição |
 | :--- | :--- |
@@ -43,7 +40,7 @@ O**Blog Acadêmico** surge para resolver a fragmentação das rotinas universit�
 
 ---
 
-##🛠️ Tecnologias e Ferramentas
+## 🛠️ Tecnologias e Ferramentas
 
 | Categoria | Tecnologia / Ferramenta |
 | :--- | :--- |
@@ -53,7 +50,7 @@ O**Blog Acadêmico** surge para resolver a fragmentação das rotinas universit�
 
 ---
 
-##📂 Estrutura de Arquivos
+## 📂 Estrutura de Arquivos
 
 ```text
 BLOG-ACADEMICO/
