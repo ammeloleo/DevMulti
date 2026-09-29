@@ -1,6 +1,6 @@
-<div align="center">
 
-# 🎓 BLOG ACADÊMICO
+
+#🎓 BLOG ACADÊMICO
 
 **Uma plataforma intuitiva para organização de estudos, colaboração e gestão da vida universitária.**
 
@@ -10,18 +10,18 @@
 
 </div>
 
-> [!NOTE]
-> Este projeto é um protótipo funcional de front-end desenvolvido com foco em Experiência do Usuário (UX) e Design Responsivo.
+>[!NOTE]
+>Este projeto é um protótipo funcional de front-end desenvolvido com foco em Experiência do Usuário (UX) e Design Responsivo.
 
 ---
 
-## 📌 Sobre o Projeto
+##📌 Sobre o Projeto
 
-O **Blog Acadêmico** surge para resolver a fragmentação das rotinas universitárias. Em vez de utilizar múltiplos aplicativos para acompanhar entregas, encontrar colegas de grupo e ver avisos, a plataforma centraliza todas as ferramentas essenciais do estudante em um só ambiente.
+O**Blog Acadêmico** surge para resolver a fragmentação das rotinas universitárias. Em vez de utilizar múltiplos aplicativos para acompanhar entregas, encontrar colegas de grupo e ver avisos, a plataforma centraliza todas as ferramentas essenciais do estudante em um só ambiente.
 
 ---
 
-## 🎯 Objetivos
+##🎯 Objetivos
 
 - 🚀 **Centralização:** Reunir trabalhos, prazos e notificações em uma única interface.
 - 🤝 **Conectividade:** Facilitar o networking e o trabalho em equipe através do recurso *Buddies* e *Chat*.
@@ -29,7 +29,7 @@ O **Blog Acadêmico** surge para resolver a fragmentação das rotinas universit
 
 ---
 
-## ✨ Funcionalidades Principais
+##✨ Funcionalidades Principais
 
 | Recurso | Descrição |
 | :--- | :--- |
@@ -43,7 +43,7 @@ O **Blog Acadêmico** surge para resolver a fragmentação das rotinas universit
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas
+##🛠️ Tecnologias e Ferramentas
 
 | Categoria | Tecnologia / Ferramenta |
 | :--- | :--- |
@@ -53,7 +53,7 @@ O **Blog Acadêmico** surge para resolver a fragmentação das rotinas universit
 
 ---
 
-## 📂 Estrutura de Arquivos
+##📂 Estrutura de Arquivos
 
 ```text
 BLOG-ACADEMICO/
