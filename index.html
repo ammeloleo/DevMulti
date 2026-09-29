@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Acadêmico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">Blog Acadêmico</div>
+      <nav>
+        <button class="nav-item active" data-view="inicio"><span>⌂</span> Início</button>
+        <button class="nav-item" data-view="trabalhos"><span>▣</span> Meus trabalhos</button>
+        <button class="nav-item" data-view="calendario"><span>□</span> Calendário</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="profile-mini" data-view="perfil">
+          <div id="profile-avatar" class="avatar small"><p></p></div>
+          <div>
+            <strong>Seu perfil</strong>
+            <small>Aluno • DSM</small>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Início</h1>
+          <p id="page-subtitle">Compartilhe, organize e acompanhe sua vida acadêmica.</p>
+        </div>
+        <button class="profile-chip" data-view="perfil">
+          <div id="profile-avatar-top" class="avatar"></div>
+          <span id="profile-name">Nome do aluno</span>
+        </button>
+      </header>
+
+      <section id="view-inicio" class="view active-view">
+        <div class="welcome-card">
+          <div>
+            <span class="eyebrow">ESPAÇO ACADÊMICO</span>
+            <h2 id="welcome-title">Olá, Nome do aluno! 👋</h2>
+            <p>Veja novidades, trabalhos e os próximos compromissos da sua turma.</p>
+          </div>
+          <button class="primary-btn" id="focus-post">+ Nova publicação</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="content-column">
+            <div class="section-heading">
+              <div>
+                <h2>Publicações recentes</h2>
+                <p>O que está acontecendo na comunidade.</p>
+              </div>
+              <button class="text-btn" id="filter-btn">Mais recentes</button>
+            </div>
+
+            <div id="posts-list"></div>
+          </section>
+
+          <aside class="right-column">
+            <div class="card upcoming">
+              <div class="section-heading compact">
+                <div>
+                  <h3>Próximos eventos</h3>
+                  <p>Não perca os prazos.</p>
+                </div>
+                <button class="icon-btn" data-view="calendario">→</button>
+              </div>
+              <div id="upcoming-events"></div>
+            </div>
+
+
+
+
+
+          </aside>
+        </div>
+      </section>
+
+      <section id="view-trabalhos" class="view">
+        <div class="section-heading">
+          <!-- <div>
+            <h2>Meus trabalhos</h2>
+            <p>Acompanhe suas atividades e projetos.</p>
+          </div> -->
+          <!-- <button class="primary-btn" id="new-work">+ Novo trabalho</button> -->
+        </div>
+        <div class="work-grid" id="work-grid"></div>
+      </section>
+
+      <section id="view-calendario" class="view">
+        <div class="section-heading">
+          <!-- <div>
+            <h2>Calendário acadêmico</h2>
+            <p>Provas, entregas e eventos da sua turma.</p>
+          </div> -->
+          <button class="primary-btn" id="new-event">+ Novo evento</button>
+        </div>
+        <div class="calendar-layout">
+          <div class="card calendar-card">
+            <div class="calendar-head">
+              <button class="month-btn" id="prev-month">
+                <h2>anterior</h2>
+              </button>
+              <h3 id="calendar-title"></h3>
+              <button class="month-btn" id="next-month">
+                <h2>seguinte</h2>
+              </button>
+            </div>
+            <div class="weekdays">
+              <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div class="calendar-days" id="calendar-days"></div>
+          </div>
+          <div class="card event-panel">
+            <h3>Agenda</h3>
+            <p class="muted">Datas importantes cadastradas.</p>
+            <div id="event-list"></div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="view-perfil" class="view">
+        <div class="profile-cover">
+          <div id="profile-large" class="profile-avatar avatar-xl">SA</div>
+          <div>
+            <h2 id="nomeAluno">Nome do aluno</h2>
+            <p>Desenvolvimento de Software Multiplataforma</p>
+          </div>
+          <button class="secondary-btn">Editar perfil</button>
+        </div>
+        <div class="profile-grid">
+          <div class="card info-card">
+            <h3>Informações pessoais / curso</h3>
+            <div class="info-line"><span>Curso</span><strong>Desenvolvimento de Software Multiplataforma</strong></div>
+            <div class="info-line"><span>Semestre</span><strong>4º semestre</strong></div>
+            <div class="info-line"><span>Instituição</span><strong>Fatec</strong></div>
+          </div>
+          <div class="card info-card">
+            <h3>Sobre você</h3>
+            <p class="muted">Este espaço pode apresentar uma breve descrição do aluno, interesses acadêmicos e áreas de
+              estudo.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="post-modal">
+    <div class="modal">
+      <button class="close-modal">×</button>
+      <span class="eyebrow">NOVA PUBLICAÇÃO</span>
+      <h2>Compartilhe algo com a turma</h2>
+      <form onsubmit="adicionarPostagem(event)" id="post-form">
+        <label>Título<input id="post-title" required placeholder="Ex.: Material para a prova"></label>
+        <!-- <label>Categoria<select id="post-category">
+            <option>Estudos</option>
+            <option>Trabalhos</option>
+            <option>Avisos</option>
+            <option>Dúvidas</option>
+          </select></label> -->
+        <label>Descrição<textarea id="post-description" required
+            placeholder="Escreva sua publicação..."></textarea></label>
+        <div class="modal-actions"><button type="button" class="secondary-btn close-modal">Cancelar</button><button
+            class="primary-btn">Publicar</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="event-modal">
+    <div class="modal">
+      <button class="close-modal">×</button>
+      <span class="eyebrow">NOVO EVENTO</span>
+      <h2>Adicionar ao calendário</h2>
+      <form onsubmit="adicionarEvento(event, 1)" id="event-form">
+        <label>Evento<input id="event-title-input" required placeholder="Ex.: Prova de React"></label>
+        <label>Data<input id="event-date-input" type="date" required></label>
+        <label>Tipo<select id="event-type">
+            <option value="prova">Prova</option>
+            <option value="trabalho">Trabalho</option>
+            <option value="evento">Evento</option>
+          </select></label>
+        <div class="modal-actions"><button type="submit" class="secondary-btn close-modal">Cancelar</button><button
+            class="primary-btn">Adicionar</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Ação realizada com sucesso!</div>
+
+  <div class="chat-window" id="chat-window">
+    <div class="chat-head">
+      <div><strong id="chat-name">Ana Souza</strong><small>● Online</small></div><button id="close-chat">×</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message received">Oi! Você já começou o trabalho de React?</div>
+      <div class="message sent">Ainda não, mas vou começar hoje 😊</div>
+    </div>
+    <form class="chat-input" id="chat-form"><input id="chat-text" placeholder="Digite uma mensagem..."
+        autocomplete="off"><button>➤</button></form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
