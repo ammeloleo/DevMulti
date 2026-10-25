@@ -70,7 +70,7 @@ Consulte os documentos técnicos do projeto pelos atalhos abaixo:
 | Documento | Conteúdo |
 | :--- | :--- |
 | [📄 Script SQL](documentos/scriptsql.md) | Estrutura SQL das tabelas de usuários, postagens e eventos. |
-| [🗂️ Dicionário de Dados](documentacao/dicionario-de-dados.md) | Campos, tipos, chaves e descrições das tabelas. |
-| [🧪 Testes de QA](documentacao/testes-qa.md) | Testes unitários, de integração e evidências de funcionamento. |
-| [🔌 API Funcional](documentacao/api.md) | Endpoints REST do Supabase, parâmetros e códigos HTTP. |
-| [🧩 Diagrama ER](documentacao/diagrama-er.md) | Diagrama entidade-relacionamento do banco de dados. |
+| [🗂️ Dicionário de Dados](documentos/dicionario-de-dados.md) | Campos, tipos, chaves e descrições das tabelas. |
+| [🧪 Testes de QA](documentos/testes-qa.md) | Testes unitários, de integração e evidências de funcionamento. |
+| [🔌 API Funcional](documentos/api.md) | Endpoints REST do Supabase, parâmetros e códigos HTTP. |
+| [🧩 Diagrama ER](documentos/diagrama-er.md) | Diagrama entidade-relacionamento do banco de dados. |
