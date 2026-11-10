@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17191d">
+  <title>Entrar como professor | Blog Acadêmico</title>
+  <link rel="icon" type="image/png" href="logo-blog.png">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="teacher-page">
+  <main class="auth-layout">
+    <section class="intro-panel" aria-label="Apresentação do Blog Acadêmico">
+      <a class="brand" href="index.html"><img class="brand-mark" src="logo-blog.png" alt="" width="32" height="32"><span>Blog <strong>Acadêmico</strong></span></a>
+      <div class="intro-copy">
+        <span class="eyebrow">ÁREA DO PROFESSOR</span>
+        <h1>Conecte-se com suas turmas.</h1>
+        <p>Acompanhe projetos e participe da comunidade acadêmica.</p>
+      </div>
+      <div class="intro-footer"><span>Ensino também se faz em rede.</span><span>02 / 03</span></div>
+    </section>
+    <section class="form-panel">
+      <div class="mobile-brand"><a class="brand" href="index.html"><img class="brand-mark" src="logo-blog.png" alt="" width="32" height="32"><span>Blog <strong>Acadêmico</strong></span></a></div>
+      <div class="form-wrap">
+        <a class="back-link" href="index.html">← <span>Voltar ao início</span></a>
+        <div class="form-heading"><span class="eyebrow">PROFESSOR</span><h2>Entrar na sua conta</h2><p>Use seu e-mail e senha institucionais.</p></div>
+        <form class="auth-form" action="#" method="post">
+          <label for="email">E-mail institucional</label>
+          <input id="email" name="email" type="email" placeholder="nome@instituicao.edu.br" autocomplete="email" required>
+          <div class="label-row"><label for="senha">Senha</label><a href="esqueci-senha.html">Esqueceu sua senha?</a></div>
+          <input id="senha" name="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+          <label class="remember"><input type="checkbox" name="lembrar"><span>Manter conectado</span></label>
+          <button class="submit-btn" type="submit" disabled>Entrar como professor <span>→</span></button>
+          <p class="auth-message" id="login-message" role="status"></p>
+        </form>
+        <div class="switch-card"><span>É estudante?</span><a href="login-estudante.html">Acessar área do estudante <span>→</span></a></div>
+        <p class="legal">Problemas para entrar? Fale com a coordenação.</p>
+      </div>
+      <footer class="form-footer"><span>© Blog Acadêmico</span><a href="login-estudante.html">Acesso para estudantes</a></footer>
+    </section>
+  </main>
+  <script src="supabase.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
+

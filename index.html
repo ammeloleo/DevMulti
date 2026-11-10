@@ -5,16 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Acadêmico</title>
+  <link rel="icon" type="image/png" href="logo-blog.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="app-shell">
+  <div class="session-status" id="session-status">
+    <p id="session-message" role="status">Carregando sua sessão…</p>
+    <a id="session-login" href="login-estudante.html" hidden>Voltar ao login</a>
+  </div>
+  <div class="app-shell" hidden>
     <aside class="sidebar">
-      <div class="brand">Blog Acadêmico</div>
-      <nav>
+      <div class="brand"><img src="logo-blog.png" alt="" width="36" height="36"><span>Blog Acadêmico</span></div>
+      <nav aria-label="Navegação principal">
         <button class="nav-item active" data-view="inicio"><span>⌂</span> Início</button>
         <button class="nav-item" data-view="trabalhos"><span>▣</span> Meus trabalhos</button>
+        <button class="nav-item" data-view="publicacoes"><span>＋</span> Publicações</button>
         <button class="nav-item" data-view="calendario"><span>□</span> Calendário</button>
       </nav>
       <div class="sidebar-bottom">
@@ -30,37 +36,40 @@
 
     <main class="main">
       <header class="topbar">
-        <div>
-          <h1 id="page-title">Início</h1>
-          <p id="page-subtitle">Compartilhe, organize e acompanhe sua vida acadêmica.</p>
+        <div class="home-heading-hidden">
+          <h1 id="page-title"></h1>
+          <p id="page-subtitle"></p>
         </div>
-        <button class="profile-chip" data-view="perfil">
+        <label class="blog-search"><span aria-hidden="true">⌕</span><input id="blog-search-input" type="search" placeholder="Pesquisar no blog..." aria-label="Pesquisar no blog"></label>
+        <button class="profile-chip" data-view="perfil" type="button" aria-label="Abrir meu perfil">
           <div id="profile-avatar-top" class="avatar"></div>
           <span id="profile-name">Nome do aluno</span>
         </button>
+        <button class="text-btn" id="sign-out" type="button">Sair</button>
       </header>
 
       <section id="view-inicio" class="view active-view">
         <div class="welcome-card">
           <div>
-            <span class="eyebrow">ESPAÇO ACADÊMICO</span>
-            <h2 id="welcome-title">Olá, Nome do aluno! 👋</h2>
-            <p>Veja novidades, trabalhos e os próximos compromissos da sua turma.</p>
+            <span class="eyebrow">BEM-VINDO(A) AO</span>
+            <h2 id="welcome-title">Blog Acadêmico</h2>
+            <p>Aqui você encontra trabalhos, avisos, datas importantes e recursos para facilitar a sua jornada acadêmica.</p>
           </div>
-          <button class="primary-btn" id="focus-post">+ Nova publicação</button>
+          <img class="hero-logo" src="logo-blog.png" alt="" width="135" height="135">
         </div>
 
         <div class="dashboard-grid">
           <section class="content-column">
             <div class="section-heading">
               <div>
-                <h2>Publicações recentes</h2>
+                <h2>Postagens recentes</h2>
                 <p>O que está acontecendo na comunidade.</p>
               </div>
               <button class="text-btn" id="filter-btn">Mais recentes</button>
             </div>
 
             <div id="posts-list"></div>
+            <p class="muted" id="posts-empty" role="status" hidden></p>
           </section>
 
           <aside class="right-column">
@@ -70,7 +79,7 @@
                   <h3>Próximos eventos</h3>
                   <p>Não perca os prazos.</p>
                 </div>
-                <button class="icon-btn" data-view="calendario">→</button>
+                <button class="icon-btn" data-view="calendario" aria-label="Abrir calendário">→</button>
               </div>
               <div id="upcoming-events"></div>
             </div>
@@ -80,6 +89,21 @@
 
 
           </aside>
+        </div>
+      </section>
+
+      <section id="view-publicacoes" class="view">
+        <div class="card publication-card">
+          <span class="eyebrow">COMUNIDADE DSM</span>
+          <h2>Compartilhe algo com a turma</h2>
+          <p class="muted">Publique materiais, dúvidas, avisos ou dicas para seus colegas.</p>
+          <form id="publication-page-form">
+            <label for="publication-title">Título</label>
+            <input id="publication-title" name="titulo" required maxlength="120" placeholder="Ex.: Resumo para a prova de React">
+            <label for="publication-description">Descrição</label>
+            <textarea id="publication-description" name="conteudo" required rows="6" placeholder="Escreva sua publicação..."></textarea>
+            <button class="primary-btn" type="submit">Publicar</button>
+          </form>
         </div>
       </section>
 
@@ -106,11 +130,11 @@
           <div class="card calendar-card">
             <div class="calendar-head">
               <button class="month-btn" id="prev-month">
-                <h2>anterior</h2>
+                Anterior
               </button>
               <h3 id="calendar-title"></h3>
               <button class="month-btn" id="next-month">
-                <h2>seguinte</h2>
+                Seguinte
               </button>
             </div>
             <div class="weekdays">
@@ -132,54 +156,50 @@
           <div id="profile-large" class="profile-avatar avatar-xl">SA</div>
           <div>
             <h2 id="nomeAluno">Nome do aluno</h2>
-            <p>Desenvolvimento de Software Multiplataforma</p>
+            <p id="profile-course-cover"></p>
           </div>
-          <button class="secondary-btn">Editar perfil</button>
+          <button class="secondary-btn" id="edit-profile-btn" type="button">Editar perfil</button>
         </div>
         <div class="profile-grid">
           <div class="card info-card">
             <h3>Informações pessoais / curso</h3>
-            <div class="info-line"><span>Curso</span><strong>Desenvolvimento de Software Multiplataforma</strong></div>
-            <div class="info-line"><span>Semestre</span><strong>4º semestre</strong></div>
+            <div class="info-line"><span>Curso</span><strong id="profile-course"></strong></div>
+            <div class="info-line"><span>Semestre</span><strong id="profile-term"></strong></div>
             <div class="info-line"><span>Instituição</span><strong>Fatec</strong></div>
           </div>
           <div class="card info-card">
             <h3>Sobre você</h3>
-            <p class="muted">Este espaço pode apresentar uma breve descrição do aluno, interesses acadêmicos e áreas de
-              estudo.</p>
+            <p class="muted" id="profile-description">Conte um pouco sobre você, seus interesses acadêmicos e áreas de estudo.</p>
           </div>
         </div>
       </section>
     </main>
   </div>
 
-  <div class="modal-backdrop" id="post-modal">
+  <div class="modal-backdrop" id="profile-modal">
     <div class="modal">
-      <button class="close-modal">×</button>
-      <span class="eyebrow">NOVA PUBLICAÇÃO</span>
-      <h2>Compartilhe algo com a turma</h2>
-      <form onsubmit="adicionarPostagem(event)" id="post-form">
-        <label>Título<input id="post-title" required placeholder="Ex.: Material para a prova"></label>
-        <!-- <label>Categoria<select id="post-category">
-            <option>Estudos</option>
-            <option>Trabalhos</option>
-            <option>Avisos</option>
-            <option>Dúvidas</option>
-          </select></label> -->
-        <label>Descrição<textarea id="post-description" required
-            placeholder="Escreva sua publicação..."></textarea></label>
-        <div class="modal-actions"><button type="button" class="secondary-btn close-modal">Cancelar</button><button
-            class="primary-btn">Publicar</button></div>
+      <button class="close-modal" type="button" aria-label="Fechar">×</button>
+      <span class="eyebrow">SEU PERFIL</span>
+      <h2>Editar perfil</h2>
+      <p class="muted">As alterações são salvas neste navegador.</p>
+      <form id="profile-form">
+        <label for="profile-edit-name">Nome</label>
+        <input id="profile-edit-name" required maxlength="80" placeholder="Seu nome">
+        <label for="profile-edit-description">Descrição</label>
+        <textarea id="profile-edit-description" rows="4" maxlength="400" placeholder="Fale um pouco sobre você"></textarea>
+        <label for="profile-edit-image">Imagem de perfil</label>
+        <input id="profile-edit-image" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+        <div class="modal-actions"><button type="button" class="secondary-btn close-modal">Cancelar</button><button class="primary-btn" type="submit">Salvar alterações</button></div>
       </form>
     </div>
   </div>
 
   <div class="modal-backdrop" id="event-modal">
     <div class="modal">
-      <button class="close-modal">×</button>
+      <button class="close-modal" type="button" aria-label="Fechar">×</button>
       <span class="eyebrow">NOVO EVENTO</span>
       <h2>Adicionar ao calendário</h2>
-      <form onsubmit="adicionarEvento(event, 1)" id="event-form">
+      <form id="event-form">
         <label>Evento<input id="event-title-input" required placeholder="Ex.: Prova de React"></label>
         <label>Data<input id="event-date-input" type="date" required></label>
         <label>Tipo<select id="event-type">
@@ -187,13 +207,13 @@
             <option value="trabalho">Trabalho</option>
             <option value="evento">Evento</option>
           </select></label>
-        <div class="modal-actions"><button type="submit" class="secondary-btn close-modal">Cancelar</button><button
+        <div class="modal-actions"><button type="button" class="secondary-btn close-modal">Cancelar</button><button
             class="primary-btn">Adicionar</button></div>
       </form>
     </div>
   </div>
 
-  <div class="toast" id="toast">Ação realizada com sucesso!</div>
+  <div class="toast" id="toast" role="status"></div>
 
   <div class="chat-window" id="chat-window">
     <div class="chat-head">
@@ -207,6 +227,7 @@
         autocomplete="off"><button>➤</button></form>
   </div>
 
+  <script src="supabase.js"></script>
   <script src="script.js"></script>
 </body>
 
