@@ -6,8 +6,11 @@
 | --- | --- | --- | --- | --- |
 | `id` | `BIGINT` | Não | PK | Identificador único do usuário. |
 | `nome` | `VARCHAR(255)` | Não | — | Nome completo do estudante. |
-| `termo` | `VARCHAR(50)` | Sim | — | Termo/semestre atual do aluno. |
-| `eventos` | `JSONB` | Sim | — | Objeto JSON contendo eventos personalizados. |
+| `curso` | `TEXT` | Sim | — | Curso do aluno. |
+| `termo` | `SMALLINT` | Sim | — | Termo/semestre atual do aluno. |
+| `events` | `JSONB[]` | Sim | — | Lista de eventos personalizados. |
+| `email_user` | `TEXT` | Sim | — | E-mail do cadastro usado no login. |
+| `HashSenha` | `TEXT` | Sim | — | Senha legada comparada dentro do banco. A coluna é privada para o aplicativo. |
 
 ## Tabela `postagens`
 

@@ -1,13 +1,11 @@
 # API Funcional
 
-## Endpoints Supabase REST
+O aplicativo envia requisições POST às funções do Supabase em `/rest/v1/rpc/`. As funções validam a sessão antes de acessar as tabelas.
 
-| Método | Endpoint | Descrição / parâmetros | Código HTTP |
-| --- | --- | --- | --- |
-| `GET` | `/rest/v1/usuario` | Consulta a lista de usuários ou busca por ID (`?id=eq.{id}`). | `200 OK` |
-| `GET` | `/rest/v1/postagens` | Retorna todas as postagens publicadas. | `200 OK` |
-| `POST` | `/rest/v1/postagens` | Cria uma publicação. Envia: `titulo`, `text`, `data`, `id_usuario` e `curtidas`. | `201 Created` |
-| `PATCH` | `/rest/v1/postagens?id=eq.{id}` | Atualiza uma postagem específica, como ao incrementar `curtidas`. | `200 OK` |
-| `DELETE` | `/rest/v1/postagens?id=eq.{id}` | Remove uma postagem pelo ID. | `204 No Content` |
-| `GET` | `/rest/v1/eventos` | Consulta os eventos cadastrados no calendário. | `200 OK` |
-| `POST` | `/rest/v1/eventos` | Cadastra um novo evento no calendário acadêmico. | `201 Created` |
+| Função | Parâmetros | Retorno |
+| --- | --- | --- |
+| `login_academico` | `email`, `senha`, `lembrar` | Token temporário de sessão ou valor nulo. |
+| `inicio_academico` | `token` | Perfil, agenda e publicações recentes. |
+| `adicionar_evento_academico` | `token`, `novo_evento` com `date`, `type` e `title` | Agenda atualizada da conta. |
+| `publicar_academico` | `token`, `titulo`, `conteudo` | Cria a publicação com a conta da sessão como autora. |
+| `sair_academico` | `token` | Encerra a sessão. |

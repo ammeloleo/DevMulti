@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+/* 1. Cores e configurações gerais */
+:root {
+  color-scheme: dark;
+  --page-bg: #08090b;
+  --card-bg: #15171b;
+  --field-bg: #1d2025;
+  --field-border: #343942;
+  --line: #30343b;
+  --text: #f2f4f7;
+  --text-muted: #a4aab3;
+  --text-soft: #8a919b;
+  --blue: #709eda;
+  --blue-light: #8eb4e9;
+  --blue-dark: #527caf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background: var(--page-bg);
+  font-family: 'DM Sans', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a { color: inherit; }
+button, input { font: inherit; }
+
+/* 2. Estrutura centralizada */
+.auth-layout {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px 18px;
+}
+
+/* Mantido no HTML como apresentação alternativa, mas oculto neste layout */
+.intro-panel { display: none; }
+
+.form-panel {
+  display: flex;
+  width: min(100%, 440px);
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  background: transparent;
+}
+
+.form-wrap {
+  width: 100%;
+  padding: 34px 38px 30px;
+  border: 1px solid #282c33;
+  border-radius: 16px;
+  background: var(--card-bg);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .28);
+}
+
+/* 3. Marca e navegação */
+.mobile-brand {
+  display: block;
+  margin: 0 auto 25px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-family: Manrope, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -.04em;
+  text-decoration: none;
+}
+
+.brand strong { font-weight: 800; }
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-soft);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.back-link:hover,
+.label-row a:hover,
+.form-footer a:hover { color: var(--blue-light); }
+
+/* 4. Título e campos do formulário */
+.form-heading { margin: 30px 0 25px; }
+
+.eyebrow {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--blue-light);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.form-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: Manrope, sans-serif;
+  font-size: clamp(26px, 5vw, 31px);
+  font-weight: 700;
+  letter-spacing: -.05em;
+  line-height: 1.2;
+}
+
+.form-heading p {
+  margin: 9px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form > label:not(.remember),
+.label-row label {
+  margin: 0 0 8px;
+  color: #e0e3e8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.auth-form input[type='email'],
+.auth-form input[type='password'] {
+  width: 100%;
+  height: 47px;
+  padding: 0 13px;
+  border: 1px solid var(--field-border);
+  border-radius: 8px;
+  outline: none;
+  color: var(--text);
+  background: var(--field-bg);
+  font-size: 13px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.auth-form input::placeholder { color: #858c97; }
+
+.auth-form input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(113, 157, 221, .13);
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 19px;
+}
+
+.label-row label { margin-bottom: 8px; }
+
+.label-row a {
+  margin-bottom: 8px;
+  color: var(--blue-light);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 15px 0 19px;
+  color: #adb3bd;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.remember input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--blue);
+}
+
+/* 5. Botão principal e links auxiliares */
+.submit-btn {
+  display: flex;
+  min-height: 47px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #252a32;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+
+.submit-btn span { color: #a9c8ef; font-size: 18px; }
+.submit-btn:hover { background: #3b4654; }
+.submit-btn:disabled { cursor: wait; opacity: .65; }
+.auth-message { margin: 0; font-size: 14px; }
+.auth-message:empty { margin-top: -12px; }
+
+.switch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+}
+
+.switch-card > span { color: var(--text-muted); font-size: 11px; }
+
+.switch-card a {
+  width: fit-content;
+  color: var(--blue-light);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.switch-card a span { padding-left: 3px; }
+
+.legal {
+  margin: 15px 0 0;
+  color: var(--text-soft);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 2px 0;
+  color: var(--text-soft);
+  font-size: 10px;
+}
+
+.form-footer a { color: #aab0b9; text-decoration: none; }
+
+/* 6. Elementos exclusivos da recuperação de senha */
+.recovery-wrap .form-heading { margin-top: 35px; }
+.recovery-wrap .submit-btn { margin-top: 21px; }
+
+.help-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 17px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  background: #20242a;
+}
+
+.help-icon {
+  display: grid;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  border: 1px solid #7d9ec7;
+  border-radius: 50%;
+  color: #a9c8ef;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.help-card p {
+  margin: 0;
+  color: #b0b6c0;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.recovery-wrap .switch-card {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 7. Ajustes para celular */
+@media (max-width: 480px) {
+  .auth-layout {
+    justify-content: flex-start;
+    padding: 22px 16px 14px;
+  }
+
+  .mobile-brand { margin-bottom: 22px; }
+  .form-wrap { padding: 27px 22px 24px; border-radius: 13px; }
+  .form-heading { margin: 26px 0 22px; }
+  .recovery-wrap .form-heading { margin-top: 30px; }
+  .form-footer { font-size: 9px; }
+}
+
+@media (max-width: 350px) {
+  .auth-layout { padding-right: 12px; padding-left: 12px; }
+  .form-wrap { padding-right: 17px; padding-left: 17px; }
+  .label-row a { font-size: 10px; }
+}
+
+/* Respeita a preferência do usuário por menos animações */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
