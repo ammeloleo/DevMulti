@@ -286,11 +286,21 @@ function renderPosts() {
 }
 
 
+function categoriaEvento(tipo) {
+  const categorias = {
+    prova: { classe: "event-prova", nome: "Prova" },
+    trabalho: { classe: "event-trabalho", nome: "Trabalho" },
+    entrega: { classe: "event-trabalho", nome: "Trabalho" }
+  };
+  return Object.hasOwn(categorias, tipo) ? categorias[tipo] : { classe: "event-evento", nome: "Evento" };
+}
+
 function renderUpcoming(events) {
   const box = document.getElementById("upcoming-events");
   box.innerHTML = events.slice().sort((a, b) => a.date.localeCompare(b.date)).slice(0, 9).map(e => {
     const d = new Date(e.date + "T12:00:00");
-    return `<div class="event-row"><div class="date-box"><b>${String(d.getDate()).padStart(2, "0")}</b><small>${d.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "")}</small></div><div><strong>${esc(e.title)}</strong><small>${e.type === "prova" ? "Avaliação" : e.type === "trabalho" ? "Entrega" : "Evento acadêmico"}</small></div></div>`
+    const categoria = categoriaEvento(e.type);
+    return `<div class="event-row ${categoria.classe}"><div class="date-box"><b>${String(d.getDate()).padStart(2, "0")}</b><small>${d.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "")}</small></div><div><strong>${esc(e.title)}</strong><small>${categoria.nome}</small></div></div>`
   }).join("");
 }
 
@@ -302,9 +312,10 @@ function renderWorks(works) {
     const d = new Date(e.date + "T12:00:00");
 
     const item = document.createElement("div");
-    item.className = "event-item";
+    const categoria = categoriaEvento(e.type);
+    item.className = `event-item ${categoria.classe}`;
 
-    item.innerHTML = `<strong>${esc(e.title)}</strong><small>${d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" })}</small><br><span class="event-tag">${e.type}</span>`;
+    item.innerHTML = `<strong>${esc(e.title)}</strong><small>${d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" })}</small><br><span class="event-tag">${categoria.nome}</span>`;
 
     container.appendChild(item);
   });
@@ -323,15 +334,21 @@ function renderCalendar(events) {
     if (n <= 0) { day = prevLast + n; cls += " muted" } else if (n > last) { day = n - last; cls += " muted" }
     const iso = (n > 0 && n <= last) ? `${y}-${String(m + 1).padStart(2, "0")}-${String(n).padStart(2, "0")}` : "";
     if (iso === new Date().toISOString().slice(0, 10)) cls += " today";
-    if (events.some(e => e.date === iso)) cls += " selected";
-    html += `<div class="${cls}"><span class="day-number">${day}</span>${events.some(e => e.date === iso) ? '<i class="dot"></i>' : ""}</div>`;
+    const categorias = [...new Set(events.filter(e => e.date === iso).map(e => e.type))]
+      .map(categoriaEvento);
+    const unicas = [...new Map(categorias.map(categoria => [categoria.classe, categoria])).values()];
+    if (unicas.length) cls += " selected";
+    const marcadores = unicas.map(categoria =>
+      `<span class="dot ${categoria.classe}" role="img" aria-label="${categoria.nome}" title="${categoria.nome}"></span>`
+    ).join("");
+    html += `<div class="${cls}"><span class="day-number">${day}</span><div class="day-markers">${marcadores}</div></div>`;
   }
   days.innerHTML = html;
 }
 function renderEventList(events) {
   const sorted = events.slice().sort((a, b) => a.date.localeCompare(b.date));
   document.getElementById
-    ("event-list").innerHTML = sorted.map(e => { const d = new Date(e.date + "T12:00:00"); return `<div class="event-item"><strong>${esc(e.title)}</strong><small>${d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" })}</small><br><span class="event-tag">${e.type}</span></div>` }).join("");
+    ("event-list").innerHTML = sorted.map(e => { const d = new Date(e.date + "T12:00:00"); const categoria = categoriaEvento(e.type); return `<div class="event-item ${categoria.classe}"><strong>${esc(e.title)}</strong><small>${d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" })}</small><br><span class="event-tag">${categoria.nome}</span></div>` }).join("");
 }
 
 function navigate(view) {
