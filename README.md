@@ -11,13 +11,13 @@
 
 > Projeto front-end responsivo integrado ao Supabase. O painel tem tema claro, com a mesma marca nas telas de acesso e no início.
 
-## Integrantes 
+## 🧑 Integrantes 
 
-- Isabela
-- Joao
-- Mikaella
-- Leonardo
-- Felipe
+- Isabela Sayuri
+- Joao Ferreira
+- Mikaella Ribeiro 
+- Leonardo Andrade
+- Felipe Bitencourt 
 
 ---
 
