@@ -18,7 +18,7 @@
 -João Ferreira
 -Leonardo Andrade
 -Mikaella Ribeiro
----
+
 ---
 
 ## 📌 Sobre o Projeto
